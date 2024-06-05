@@ -1,0 +1,10 @@
+%div.flex-col.mx-auto
+  %div.flex
+    %h1.mx-auto.font-bold.text-4xl TodoItems
+  - @todo_items.each do |item|
+    %div.p-6
+      %h2.font-bold.text-2xl= item.title
+      - if item.description?
+        %p= item.description
+      %p= item.todo_item_type
+      %p= item.status
