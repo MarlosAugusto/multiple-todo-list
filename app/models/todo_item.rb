@@ -1,5 +1,5 @@
 class TodoItem < ApplicationRecord
-  enum type: {
+  enum todo_item_type: {
     personal: 0,
     professional: 1,
   }
