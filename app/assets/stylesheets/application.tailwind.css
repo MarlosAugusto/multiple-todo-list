@@ -2,12 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+
+.todo-item-type-personal {
+  @apply flex px-2 py-1 rounded-lg bg-gray-300 mx-4 shadow-lg text-green-700;
+}
+.todo-item-type-professional {
+  @apply flex px-2 py-1 rounded-lg bg-gray-300 mx-4 shadow-lg text-blue-700;
 }
 
-*/
+.status-complete {
+  @apply flex px-2 py-1 rounded-lg bg-gray-200 mx-4 shadow-lg text-green-600;
+}
+.status-incomplete {
+  @apply flex px-2 py-1 rounded-lg bg-gray-200 mx-4 shadow-lg text-yellow-600;
+}
+.status-abandoned {
+  @apply flex px-2 py-1 rounded-lg bg-gray-200 mx-4 shadow-lg text-orange-600;
+}
+.status-expired {
+  @apply flex px-2 py-1 rounded-lg bg-gray-200 mx-4 shadow-lg text-red-600;
+}
+
+

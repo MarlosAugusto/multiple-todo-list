@@ -9,7 +9,11 @@
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body.container.flex.mx-auto
+  %body.container.flex-col.mx-auto
     %p.notice= notice
     %p.alert= alert
-    = yield
+    %div.flex
+      %h1.mx-auto.font-bold.text-4xl TodoItems
+    %div.flex
+      %div.flex-col.mx-auto
+        = yield
