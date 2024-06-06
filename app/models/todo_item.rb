@@ -9,6 +9,7 @@ class TodoItem < ApplicationRecord
     abandoned: 2 
   }
   has_rich_text :title
+  has_rich_text :description
 
   validates :title, presence: true
   validates :abandonment_reason, presence: true, if: Proc.new { |t| t.status == "abandoned" }
