@@ -1,9 +1,0 @@
-%div.flex-col.mx-auto.mb-10
-  %div{"data-controller"=>"scroll-reveal"}
-    - @todo_items.each_with_index do |item, index|
-      %div.p-6.reveal{"data-scroll-reveal-target" => "item", "data-delay" => "#{index*100}ms"}
-        %h2.font-bold.text-2xl= link_to item.title, edit_todo_item_path(item)
-        - if item.description?
-          %li= item.description
-        %div.flex
-          %p{:class => "todo-item-type-#{item.todo_item_type}"}= item.todo_item_type
