@@ -1,2 +1,5 @@
-web: bin/rails server
-css: bin/rails tailwindcss:watch
+docker: docker-compose up
+web: PIDFILE=tmp/pids/web.pid bin/rails server -p 3333 -b '0.0.0.0'
+api: PIDFILE=tmp/pids/api.pid API_ONLY=true bin/rails server -p 3334 -b '0.0.0.0'
+#css: yarn build:css --watch
+js: yarn build --watch

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if ! gem list foreman -i --silent; then
+if gem list --no-installed --exact --silent foreman; then
   echo "Installing foreman..."
   gem install foreman
 fi
@@ -8,9 +8,41 @@ fi
 # Default to port 3000 if not specified
 export PORT="${PORT:-3000}"
 
-# Let the debug gem allow remote connections,
-# but avoid loading until `debugger` is called
-export RUBY_DEBUG_OPEN="true"
-export RUBY_DEBUG_LAZY="true"
-
 exec foreman start -f Procfile.dev "$@"
+#!/usr/bin/env bash
+
+if ! foreman version &> /dev/null
+then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# test platform
+# install chromium if not installed
+if [ "$(uname)" == "Darwin" ]
+then
+  echo "Running on Mac OS X"
+  if [ -f "$(which chromium)" ]
+  then
+    echo "Chromium is installed"
+  else
+    echo "Installing chromium..."
+    brew cask install chromium
+  fi
+  export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]
+then
+  echo "Running on Linux"
+  if [ -f "$(which chromium-browser)" ]
+  then
+    echo "Chromium is installed"
+  else
+    echo "Installing chromium..."
+    sudo apt-get install -y chromium-browser
+  fi
+  export PUPPETEER_EXECUTABLE_PATH=$(which chromium-browser)
+else
+  echo "Unsupported platform"
+fi
+
+foreman start -f Procfile.dev "$@"
