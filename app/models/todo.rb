@@ -1,3 +1,3 @@
 class Todo < ApplicationRecord
-  belongs_to :list
+  enum category: { personal: 0, work: 1 }
 end
