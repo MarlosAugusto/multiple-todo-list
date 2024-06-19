@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+list = List.create(name: "TODO")
+list.todos.create([{ name: "Study English" }, { name: "Drink Water" }])
+
+list = List.create(name: "In Progress")
+list.todos.create([{ name: "Study Ruby", category: 1 }, { name: "Drink Coffee" }])
+list = List.create(name: "DONE")
+list.todos.create([{ name: "Pay bills" }])
+list = List.create(name: "Abandoned")
