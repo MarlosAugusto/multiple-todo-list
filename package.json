@@ -4,7 +4,9 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
-    "esbuild": "^0.21.5"
+    "esbuild": "^0.21.5",
+    "sortablejs": "^1.15.2",
+    "stimulus-use": "^0.52.2"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
