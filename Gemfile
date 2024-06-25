@@ -74,3 +74,7 @@ group :test do
 end
 
 gem "html2haml", "~> 2.3"
+
+gem "ranked-model", "~> 0.4.9"
+
+gem 'requestjs-rails'

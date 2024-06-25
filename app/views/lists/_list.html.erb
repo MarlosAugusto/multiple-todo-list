@@ -7,7 +7,7 @@
 </div>
 
 <ul>
-  <% list.todos.each do |todo| %>
+  <% list.todos.rank(:row_order).each do |todo| %>
     <li>
       <%= render todo %>  
     </li>
