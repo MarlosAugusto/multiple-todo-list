@@ -6,7 +6,7 @@
 
 </div>
 
-<ul data-controller="sortable">
+<ul data-controller="sortable" data-sortable-group-value="todos" data-sortable-list-id="<%= list.id %>">
   <% list.todos.rank(:row_order).each do |todo| %>
     <li data-sortable-update-url="<%= sort_todo_path(todo) %>">
       <%= render todo %>  

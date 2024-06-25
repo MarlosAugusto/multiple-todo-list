@@ -8,7 +8,7 @@ class TodosController < ApplicationController
 
   def sort
     @todo = Todo.find(params[:id])
-    @todo.update(row_order_position: params[:row_order_position])
+    @todo.update(row_order_position: params[:row_order_position], list_id: params[:list_id])
     head :no_content
   end
 
