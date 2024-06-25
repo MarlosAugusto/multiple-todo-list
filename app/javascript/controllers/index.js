@@ -4,8 +4,6 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import controllers from "./**/*_controller.js"
 
-import SortableController from "./sortable_controller"
-application.register("sortable", SortableController)
+controllers.forEach((controller) => application.register(controller.name, controller.module.default))
