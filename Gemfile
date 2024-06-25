@@ -73,8 +73,12 @@ group :test do
 
 end
 
+gem "haml-rails", "~> 2.0"
+
 gem "html2haml", "~> 2.3"
 
 gem "ranked-model", "~> 0.4.9"
 
 gem 'requestjs-rails'
+
+gem "cssbundling-rails", "~> 1.4"
