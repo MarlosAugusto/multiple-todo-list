@@ -13,6 +13,6 @@
     "stimulus-use": "^0.52.2"
   },
   "scripts": {
-    "build": "node esbuild.config.js"
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds"
   }
 }
