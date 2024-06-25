@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :todos
+  resources :todos do
+    member do
+      put :sort
+    end
+  end
   resources :lists do
     member do
       put :sort

@@ -3,7 +3,13 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.rank(:row_order)
+  end
+
+  def sort
+    @todo = Todo.find(params[:id])
+    @todo.update(row_order_position: params[:row_order_position])
+    head :no_content
   end
 
   # GET /todos/1 or /todos/1.json
