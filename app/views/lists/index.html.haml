@@ -6,7 +6,7 @@
     #lists.h-full.flex.bg-gray-100.rounded-lg.shadow-lg
       %ul.flex.m-4.w-full.space-x-2{"data-controller" => "sortable"}
         - @lists.each do |list|
-          %li.list{"data-sortable-update-url" => "#{sort_list_path(list)}"}
+          %li.list{class: list.color,"data-sortable-update-url" => "#{sort_list_path(list)}"}
             = render list
         .new-list
           = link_to "+", new_list_path

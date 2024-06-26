@@ -19,10 +19,12 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    @list_colors = ["neutral", "green", "emerald", "red", "yellow", "orange", "blue", "sky"]
   end
 
   # GET /lists/1/edit
   def edit
+    @list_colors = ["neutral", "green", "emerald", "red", "yellow", "orange", "blue", "sky"]
   end
 
   # POST /lists or /lists.json
@@ -44,7 +46,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to list_url(@list), notice: "List was successfully updated." }
+        format.html { redirect_to root_path, notice: "List was successfully updated." }
         format.json { render :show, status: :ok, location: @list }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,6 +73,6 @@ class ListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:name)
+      params.require(:list).permit(:name, :color)
     end
 end

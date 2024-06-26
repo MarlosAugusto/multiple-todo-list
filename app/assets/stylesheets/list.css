@@ -2,6 +2,9 @@
   .list-box-shadow {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   }
+  .bg-gradient-neutral {
+    @apply bg-gradient-to-tr from-neutral-200 via-neutral-500 to-neutral-900;
+  }
   .bg-gradient-green {
     @apply bg-gradient-to-tr from-green-300 via-green-600 to-green-900;
   }
@@ -26,10 +29,34 @@
 }
 
 .list {
-  @apply flex-col flex-1 px-2 py-1 rounded-lg list-box-shadow bg-gradient-yellow;
+  @apply flex-col flex-1 px-2 py-1 rounded-lg list-box-shadow;
+}
+.list.neutral {
+  @apply bg-gradient-neutral;
+}
+.list.green {
+  @apply bg-gradient-green;
+}
+.list.emerald {
+  @apply bg-gradient-emerald;
+}
+.list.red {
+  @apply bg-gradient-red;
+}
+.list.yellow {
+  @apply bg-gradient-yellow;
+}
+.list.orange {
+  @apply bg-gradient-orange;
+}
+.list.blue {
+  @apply bg-gradient-blue;
+}
+.list.sky {
+  @apply bg-gradient-sky;
 }
 .list:hover {
-  @apply bg-gradient-to-tr from-neutral-200 to-neutral-500;
+  @apply bg-gradient-to-tr from-slate-200 to-slate-600;
 }
 
 .new-list {
