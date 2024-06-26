@@ -8,5 +8,5 @@
         - @lists.each do |list|
           %li.list{class: list.color,"data-sortable-update-url" => "#{sort_list_path(list)}"}
             = render list
-        .new-list
+        .new-item.new-list
           = link_to "+", new_list_path

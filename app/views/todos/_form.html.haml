@@ -19,8 +19,8 @@
   %div
     = form.label :deadline, style: "display: block"
     = form.datetime_field :deadline
-  %div
-    = form.label :list_id, style: "display: block"
+  .hidden
+    = form.label :list_id
     = form.text_field :list_id
   %div
     = form.submit

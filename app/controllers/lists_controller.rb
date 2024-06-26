@@ -46,6 +46,9 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
+        if @list.default_list?
+          List.where.not(id: @list.id).update_all(default_list: false)
+        end
         format.html { redirect_to root_path, notice: "List was successfully updated." }
         format.json { render :show, status: :ok, location: @list }
       else
@@ -73,6 +76,6 @@ class ListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:name, :color)
+      params.require(:list).permit(:name, :color, :default_list)
     end
 end

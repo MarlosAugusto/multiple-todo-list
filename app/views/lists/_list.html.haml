@@ -4,3 +4,6 @@
   - list.todos.rank(:row_order).each do |todo|
     %li.todo{"data-sortable-update-url" => "#{sort_todo_path(todo)}"}
       = render todo
+  - if list.default_list?
+    .new-item.new-todo
+      = link_to "+", new_todo_path

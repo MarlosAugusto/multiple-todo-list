@@ -20,6 +20,7 @@ class TodosController < ApplicationController
   def new
     @todo = Todo.new
     @categories = ["personal", "work"]
+    @todo.list_id = List.find_by(default_list: true).id
   end
 
   # GET /todos/1/edit
@@ -33,7 +34,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
+        format.html { redirect_to root_path, notice: "Todo was successfully created." }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new, status: :unprocessable_entity }

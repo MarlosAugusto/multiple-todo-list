@@ -13,5 +13,8 @@
   %div
     = form.label :color, style: "display: block"
     = form.select :color, @list_colors
+  .flex
+    = form.check_box :default_list
+    = form.label :default_list
   %div
     = form.submit

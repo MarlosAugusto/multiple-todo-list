@@ -1,7 +1,7 @@
 %div{id: "#{dom_id todo}"}
   .px-1.border-b-2.border-gray-400.text-center.font-bold
     %span
-      = link_to todo.name, edit_todo_path(todo)
+      = link_to todo.name, todo_path(todo)
     %span{:class => todo.category}
       = todo.category
   .px-2.py-1.text-sm
