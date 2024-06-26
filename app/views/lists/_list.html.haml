@@ -1,6 +1,6 @@
-.flex.bg-blue-500.text-white.rounded-lg{id: "#{dom_id list}"}
-  %p.font-bold.mx-auto= list.name
-%ul{"data-controller" => "sortable", "data-sortable-group-value" => "todos", "data-sortable-list-id" => "#{list.id}"}
+.flex.text-white{id: "#{dom_id list}"}
+  %p.font-bold.mx-auto.text-xl= link_to list.name, edit_list_path(list)
+%ul.space-y-2{"data-controller" => "sortable", "data-sortable-group-value" => "todos", "data-sortable-list-id" => "#{list.id}"}
   - list.todos.rank(:row_order).each do |todo|
-    %li.px-2.py-1.rounded-lg.bg-gray-400.m-1.shadow-lg{"data-sortable-update-url" => "#{sort_todo_path(todo)}"}
+    %li.todo{"data-sortable-update-url" => "#{sort_todo_path(todo)}"}
       = render todo

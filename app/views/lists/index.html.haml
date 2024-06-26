@@ -1,10 +1,12 @@
-%p{style: "color: green"}= notice
-.flex
-  %h1.mx-auto.my-4.font-bold.text-4xl= link_to "Todo Items", root_path
-.flex-col
-  #lists.flex.bg-gray-100.rounded-lg.shadow-lg
-    %ul.flex.mx-auto.my-4{"data-controller" => "sortable"}
-      - @lists.each do |list|
-        %li.flex-col.px-2.py-1.rounded-lg.bg-gray-200.mx-1.shadow-lg{"data-sortable-update-url" => "#{sort_list_path(list)}"}
-          = render list, class: "text-gray"
-  = link_to "New list", new_list_path
+.size-full
+  %p{style: "color: green"}= notice
+  .flex
+    %h1.mx-auto.my-4.font-bold.text-4xl= link_to "Todo Items", root_path
+  .flex-col{class: "h-4/5"}
+    #lists.h-full.flex.bg-gray-100.rounded-lg.shadow-lg
+      %ul.flex.m-4.w-full.space-x-2{"data-controller" => "sortable"}
+        - @lists.each do |list|
+          %li.list{"data-sortable-update-url" => "#{sort_list_path(list)}"}
+            = render list
+        .new-list
+          = link_to "+", new_list_path

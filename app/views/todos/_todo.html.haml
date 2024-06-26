@@ -1,13 +1,12 @@
 %div{id: "#{dom_id todo}"}
-  %p
-    %strong Name:
-    = todo.name
-  %p
-    %strong Category:
-    = todo.category
-  %p
-    %strong Description:
-    = todo.description
-  %p
-    %strong Deadline:
-    = todo.deadline
+  .px-1.border-b-2.border-gray-400.text-center.font-bold
+    %span
+      = link_to todo.name, edit_todo_path(todo)
+    %span{:class => todo.category}
+      = todo.category
+  .px-2.py-1.text-sm
+    %p.font-gray-800
+      = todo.description
+    %p
+      %strong Deadline:
+      = todo.deadline

@@ -1,0 +1,14 @@
+/* category badge */
+.personal {
+  @apply px-2 rounded-md bg-gray-100 shadow-lg text-green-700;
+}
+.work {
+  @apply px-2 rounded-md bg-gray-100 shadow-lg text-blue-700;
+}
+
+.todo {
+  @apply rounded-lg bg-gray-300 m-1 shadow-lg border-2 border-gray-400;
+}
+.todo:hover {
+  @apply bg-gray-100;
+}

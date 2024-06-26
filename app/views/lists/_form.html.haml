@@ -11,4 +11,7 @@
     = form.label :name, style: "display: block"
     = form.text_field :name
   %div
+    = form.label :color, style: "display: block"
+    = form.select :color, @list_colors
+  %div
     = form.submit
