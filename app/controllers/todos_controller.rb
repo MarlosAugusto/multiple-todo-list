@@ -19,10 +19,12 @@ class TodosController < ApplicationController
   # GET /todos/new
   def new
     @todo = Todo.new
+    @categories = ["personal", "work"]
   end
 
   # GET /todos/1/edit
   def edit
+    @categories = ["personal", "work"]
   end
 
   # POST /todos or /todos.json
@@ -71,6 +73,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.require(:todo).permit(:name, :description, :deadline, :list_id)
+      params.require(:todo).permit(:name, :description, :deadline, :category, :list_id)
     end
 end
