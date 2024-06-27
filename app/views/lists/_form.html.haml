@@ -1,4 +1,4 @@
-= form_with(model: list) do |form|
+= form_with(model: list, class: "mx-auto") do |form|
   - if list.errors.any?
     %div{style: "color: red"}
       %h2
@@ -7,14 +7,17 @@
       %ul
         - list.errors.each do |error|
           %li= error.full_message
-  %div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
-  %div
-    = form.label :color, style: "display: block"
-    = form.select :color, @list_colors
-  .flex
-    = form.check_box :default_list
-    = form.label :default_list
-  %div
-    = form.submit
+  .form-container
+    .flex.flex-1
+      = form.label :name, class: "form-label"
+      = form.text_field :name, class: "form-field"
+    .flex.flex-1
+      = form.label :color, class: "form-label"
+      = form.select :color, @list_colors, {}, {:class => "form-field"}
+    - if !list.default_list?
+      .flex.flex-1
+        .flex.mx-auto.space-x-2
+          = form.check_box :default_list, class: "rounded my-auto"
+          = form.label :default_list, class: "font-semibold"
+    .form-btn
+      = form.submit "Save", :class => "save-btn", :style => "cursor: pointer;"

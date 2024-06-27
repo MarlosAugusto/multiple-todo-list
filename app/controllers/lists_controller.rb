@@ -1,6 +1,10 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
 
+  def list_colors
+    @list_colors = ["neutral", "green", "emerald", "red", "yellow", "orange", "blue", "sky"]
+  end
+
   # GET /lists or /lists.json
   def index
     @lists = List.rank(:row_order)
@@ -19,12 +23,12 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
-    @list_colors = ["neutral", "green", "emerald", "red", "yellow", "orange", "blue", "sky"]
+    list_colors
   end
 
   # GET /lists/1/edit
   def edit
-    @list_colors = ["neutral", "green", "emerald", "red", "yellow", "orange", "blue", "sky"]
+    list_colors
   end
 
   # POST /lists or /lists.json
@@ -33,7 +37,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to list_url(@list), notice: "List was successfully created." }
+        format.html { redirect_to root_path, notice: "List was successfully created." }
         format.json { render :show, status: :created, location: @list }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,11 +64,21 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1 or /lists/1.json
   def destroy
-    @list.destroy
-
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: "List was successfully destroyed." }
-      format.json { head :no_content }
+      if @list.default_list
+        format.html { redirect_to root_path, notice: "You cannot delete the default list." }
+        format.json { render json: {error: "You cannot delete the default list."}, status: :unprocessable_entity }
+      else
+        if @list.todos.count > 0
+          current_default_list = List.find_by(default_list: true)
+          @list.todos.each do |todo|
+            todo.update(list_id: current_default_list.id)
+          end
+        end
+        @list.destroy
+        format.html { redirect_to root_path, notice: "List was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 

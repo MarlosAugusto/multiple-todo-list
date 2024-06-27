@@ -1,12 +1,12 @@
 .size-full
-  %p{style: "color: green"}= notice
+  %p.font-bold{style: "color: green"}= notice
   .flex
-    %h1.mx-auto.my-4.font-bold.text-4xl= link_to "Todo Items", root_path
+    %h1.custom-title= link_to "Todo Items", root_path
   .flex-col{class: "h-4/5"}
     #lists.h-full.flex.bg-gray-100.rounded-lg.shadow-lg
       %ul.flex.m-4.w-full.space-x-2{"data-controller" => "sortable"}
         - @lists.each do |list|
           %li.list{class: list.color,"data-sortable-update-url" => "#{sort_list_path(list)}"}
             = render list
-        .new-item.new-list
+        .new-item-btn.action-btn.new-list
           = link_to "+", new_list_path

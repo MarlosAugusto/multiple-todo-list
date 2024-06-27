@@ -1,7 +1,9 @@
-%h1 Editing list
-= render "form", list: @list
-%br/
-%div
-  = link_to "Show this list", @list
-  |
-  \#{link_to "Back to lists", lists_path}
+.size-full
+  .flex
+    = link_to "#{image_tag "back.svg", class: "absolute size-12 mt-4"}".html_safe, root_path
+    %h1.custom-title Editing list
+  .flex-col
+    = render "form", list: @list
+    .form-btn
+      = button_to "Delete", @list, method: :delete, :class  => "delete-btn", :data => { turbo_confirm: "Are you sure?" }
+

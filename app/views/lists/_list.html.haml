@@ -5,5 +5,5 @@
     %li.todo{"data-sortable-update-url" => "#{sort_todo_path(todo)}"}
       = render todo
   - if list.default_list?
-    .new-item.new-todo
+    .new-item-btn.action-btn.new-todo
       = link_to "+", new_todo_path

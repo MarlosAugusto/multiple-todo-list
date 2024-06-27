@@ -1,6 +1,10 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy ]
 
+  def categories
+    @categories = ["personal", "work"]
+  end
+
   # GET /todos or /todos.json
   def index
     @todos = Todo.rank(:row_order)
@@ -19,13 +23,13 @@ class TodosController < ApplicationController
   # GET /todos/new
   def new
     @todo = Todo.new
-    @categories = ["personal", "work"]
+    categories
     @todo.list_id = List.find_by(default_list: true).id
   end
 
   # GET /todos/1/edit
   def edit
-    @categories = ["personal", "work"]
+    categories
   end
 
   # POST /todos or /todos.json
@@ -47,7 +51,7 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to todo_url(@todo), notice: "Todo was successfully updated." }
+        format.html { redirect_to root_path, notice: "Todo was successfully updated." }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,7 +65,7 @@ class TodosController < ApplicationController
     @todo.destroy
 
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "Todo was successfully destroyed." }
       format.json { head :no_content }
     end
   end
